@@ -8,6 +8,22 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true }))//use to get deta from form in body
 // middleware
 
+app.use((req, res, next) =>{
+   console.log('hello middleware 1cd');
+   const date = `${Date.now()} : ${req.method} ${req.path}`;
+  fs .appendFile('./lgo.txt' ,date,(err, res)=>{
+   req.myname  ="karan";
+   next();
+  })
+
+})
+app.use((req, res, next) =>{
+   console.log(req.myname);
+   
+   next();
+})
+
+
 app.get('/api/users',(req , res,next)=>{
    return res.json(users)
 })
