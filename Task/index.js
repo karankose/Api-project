@@ -56,10 +56,13 @@ app.get('/users',(req , res , next)=>{
 app.post('/api/users',(req , res , next)=>{
    // create user 
    const body = req.body;
+   if(!body || !body.first_name || !body.last_name || !body.email ){
+      res.status(400).json({msg : "all fields required"});
+   }
    console.log(body);
    users.push( {...body, id : users.length + 1 });
    fs.writeFile("./MOCK_DATA.json", JSON.stringify(users),(err, data)=>{
-      return res.json(body);
+      return res.status(201).json(body);
    }) 
 })
 
