@@ -12,3 +12,10 @@ POST  /users - Create a new user
 PATCH/users/1  - edit the user with id 1
 
 DELETE/user/1 - Delete the user with id 1
+
+
+how mongoose work ===================>>>>>>>>>>
+
+schema - define the structure
+    schema - Model 
+    using - Model we do CRUD operations
